@@ -1,0 +1,242 @@
+.back-ground {
+    background-image: url("/storage/images/strawberry-cake.jpg");
+    background-size: cover;
+}
+
+.logo {
+    font-size: 27px;
+}
+
+.copy-right {
+    font-size: 20px;
+}
+
+.body-container {
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+.header-container {
+    width: 100%;
+    height: auto;
+}
+
+.header-container img {
+    max-width: 100%;
+}
+
+.show-page {
+    width: 45%;
+    margin: 0 auto;
+}
+
+.show-valid-message {
+    white-space: nowrap;
+}
+
+.item-number {
+    font-size: 20px;
+}
+
+.carts-index {
+    width: 85%;
+    margin: 0 auto;
+    background-color: rgba(248, 248, 250, 1) !important;
+    border-radius: 4px;
+}
+
+.order-history {
+    width: 85%;
+    margin: 0 auto;
+    background-color: rgba(248, 248, 250, 1) !important;
+    border-radius: 4px;
+}
+
+.carts-index h1 {
+    font-family: 'Yu Gothic', 'YuGothic';
+    color: rgba(48, 46, 46, 0.7);
+}
+
+.not-item {
+    font-family: 'Yu Gothic', 'YuGothic';
+    color: rgba(48, 46, 46, 0.7);
+    font-size: large;
+}
+
+.back-color {
+    width: 60%;
+    margin: 0 auto;
+    background-color: rgba(248, 248, 250, 1) !important;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.row-border {
+
+    border-top: solid 1px rgba(196, 194, 194, 0.7);
+    padding: 1% 0%;
+}
+
+.order-date {
+    font-family: 'Yu Gothic', 'YuGothic';
+    color: rgba(48, 46, 46, 0.7);
+    font-weight: 1000;
+    font-size: larger;
+}
+
+.order-history h1 {
+    font-family: 'Yu Gothic', 'YuGothic';
+    color: rgba(48, 46, 46, 0.7);
+}
+
+.row-border-order-history {
+    padding: 1% 0%;
+}
+
+.carts-index-text-position {
+    /* text-align: center; */
+    justify-items: center;
+    align-content: center;
+    display: grid;
+    height: 100%;
+}
+
+.total-money-position {
+    text-align: right;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.total-money {
+    font-size: 20px;
+    font-weight: 1000;
+    color: rgba(48, 46, 46, 0.7);
+}
+
+.order-button-position {
+    display: flex;
+    justify-content: center;
+}
+
+.order-button {
+    font-family: 'Yu Gothic', 'YuGothic' !important;
+    color: rgba(48, 46, 46, 0.7) !important;
+    font-weight: 1000 !important;
+    font-size: 20px !important;
+}
+
+.info-add-position {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgba(248, 248, 250, 1) !important;
+    border-radius: 4px;
+}
+
+.info-add-position span {
+    color: aliceblue;
+    background-color: rgb(241, 30, 30);
+    border-radius: 20%;
+    font-weight: 700;
+    padding: 2px;
+}
+
+.info-add-position label {
+    font-weight: 900;
+    color: rgba(57, 59, 57, 0.7);
+}
+
+.user-info {
+    width: 60%;
+    margin: 0 auto;
+    background-color: rgba(248, 248, 250, 1) !important;
+    border-radius: 4px;
+}
+
+.border-parent {
+    overflow: hidden;
+}
+
+.user-info h1 {
+    font-family: 'Yu Gothic', 'YuGothic';
+    color: rgba(48, 46, 46, 0.7);
+    font-weight: 550;
+    display: inline-block;
+    margin-bottom: 0px;
+    padding: 0.6%;
+}
+
+.info-title {
+    text-align: right;
+}
+
+.info-title-confirmation {
+    text-align: left;
+}
+
+
+.info {
+    font-weight: 550;
+    width: 25%;
+    display: inline-block;
+    text-align: right;
+    padding-right: 2%;
+}
+
+.info-town-position {
+    width: 25%;
+    display: inline-block;
+    text-align: right;
+    padding-right: 2%;
+}
+
+.info-add-h1 {
+    font-family: 'Yu Gothic', 'YuGothic';
+    color: rgba(48, 46, 46, 0.7);
+}
+
+.info-edit-h1 {
+    font-family: 'Yu Gothic', 'YuGothic';
+    color: rgba(48, 46, 46, 0.7);
+}
+
+.in-cart-btn-position {
+    margin-left: 10px !important;
+}
+
+.error-page {
+    font-weight: 900;
+    color: rgba(57, 59, 57, 0.7);
+    font-family: 'Yu Gothic', 'YuGothic';
+}
+
+.logo,.footer_icon {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.footer_icon img {
+    width: auto;
+    height: 80px;
+}
+
+@media screen and (max-width: 768px) {
+    /* スマートフォン用のスタイル */
+
+    .show-page {
+        width: 93%;
+        margin: 0 auto;
+    }
+
+    .carts-index {
+        width: 100%;
+        margin: 0 auto;
+        background-color: rgba(248, 248, 250, 1) !important;
+    }
+
+    .total-money-position {
+        text-align: right;
+        width: 70%;
+    }
+
+}
