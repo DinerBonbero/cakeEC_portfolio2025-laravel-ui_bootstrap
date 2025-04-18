@@ -15,7 +15,7 @@
                 <!--詳細とitemを繰り返す-->
                 <div class="row g-0 row-border-order-history">
                     <div class="col-md-2 col-sm-4 col-6 pr-4 cart-index-text-position">
-                        <img src="{{ asset('/storage/images/' . $orderdetail->item->image) }}" class="img-fluid">
+                        <img src="{{ asset('images/' . $orderdetail->item->image) }}" class="img-fluid">
                     </div>
                     <div class="col-md-3 col-sm-4 col-6">
                         <div class="carts-index-text-position">

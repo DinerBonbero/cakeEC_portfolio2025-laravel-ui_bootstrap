@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="card show-page">
-        <img src="{{ asset('/storage/images/' . $item->image) }}" class="card-img-top">
+        <img src="{{ asset('images/' . $item->image) }}" class="card-img-top">
         <div class="card-body">
             <h5 class="card-title">{{ $item->item_name }}</h5>
             <p class="card-text">{{ number_format($item->price, 0, ',') }}円 <br> {{ $item->description }}</p>

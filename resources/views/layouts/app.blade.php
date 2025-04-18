@@ -103,7 +103,7 @@
         <div class="card-footer p-3 bg-white">
             <span class="logo">Laravel</span>
             <div class="footer_icon">
-                <img src="{{ asset('/storage/images/chef.png') }}">
+                <img src="{{ asset('images/chef.png') }}">
             </div>
             <div>
                 <span class="copy-right">©laravel</span>

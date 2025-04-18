@@ -10,7 +10,7 @@
             <div class="d-flex justify-content-center">
                 <div class="row g-0 row-border">
                     <div class="col-md-2 col-sm-4 col-6 pr-4 cart-index-text-position">
-                        <img src="{{ asset('/storage/images/' . $cartItem->item->image) }}" class="img-fluid">
+                        <img src="{{ asset('images/' . $cartItem->item->image) }}" class="img-fluid">
                     </div>
                     <div class="col-md-3 col-sm-4 col-6">
                         <div class="carts-index-text-position">

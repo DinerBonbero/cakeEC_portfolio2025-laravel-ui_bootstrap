@@ -7,7 +7,7 @@
                 <!--🍀 row-cols-2(xs[<576px]で1行にカラム2)  row-cols-md-4(ミディアム以上でカラムが4)-->
                 <div class="col"><!--[1row(行)に12col(カラム)で設計されている、col-4で4つ分適用]-->
                     <div class="card index-page">
-                        <img src="{{ asset('storage/images/' . $item->image) }}" class="card-img-top">
+                        <img src="{{ asset('images/' . $item->image) }}" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">{{ $item->item_name }}</h5>
                             <p class="card-text">{{ number_format($item->price, 0, ',') }}円 <br> {{ $item->description }}</p>

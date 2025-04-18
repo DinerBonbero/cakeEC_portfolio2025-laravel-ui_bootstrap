@@ -51,14 +51,14 @@ class DatabaseSeeder extends Seeder
 //」
 
 //「
-//　🍀　シーダーの呼び出し
-        //$this->call([
-        //    CartSeeder::class,
-        //    //ItemSeeder::class,
-        //    OrderDetailSeeder::class,
-        //    //OrderSeeder::class,
-        //    UserInfoSeeder::class
-        //]);
+//　🍀　シーダーの呼び出しマスタ―データはItemSeeder::classのみです
+        $this->call([
+            //CartSeeder::class,
+            ItemSeeder::class,
+            //OrderDetailSeeder::class,
+            //OrderSeeder::class,
+            //UserInfoSeeder::class
+        ]);
 //」
     }
 }
