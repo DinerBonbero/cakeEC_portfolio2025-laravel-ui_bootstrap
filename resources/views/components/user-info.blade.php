@@ -24,7 +24,7 @@
         <div class="col-12">
             <span class="info"></span>
             <span>
-                <a href="{{ route('user.info_edit') }}" class="btn btn-primary">会員情報修正</a>
+                <a href="{{ route('user_info.edit') }}" class="btn btn-primary">会員情報修正</a>
             </span>
         </div>
     </div>

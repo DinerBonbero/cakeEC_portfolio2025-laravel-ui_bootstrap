@@ -7,7 +7,7 @@
 
     <div class="info-add-position p-2">
         <h1 class="info-edit-h1">会員情報修正</h1>
-        <form action="{{ route('user.info_update') }}" method="post">
+        <form action="{{ route('user_info.update') }}" method="post">
             @method('PATCH')
             @csrf
             <div class="row g-2">

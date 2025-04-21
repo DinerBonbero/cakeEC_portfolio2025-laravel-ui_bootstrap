@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\UserInfo;
 use App\Models\Cart;
 use App\Models\Order;
@@ -17,8 +16,8 @@ class OrderController extends Controller
         $cartItems = Cart::with('item')->cart()->get();
         $userInfo = UserInfo::info()->first(); //info()はscopeの認証ユーザーidの該当するuser_idのwhere()
 
-        if (empty($userInfo)) { //ユーザー情報が空の時はuser.info_addに遷移
-            return redirect()->route('user.info_add');
+        if (empty($userInfo)) { //ユーザー情報が空の時はuser_info.addに遷移
+            return redirect()->route('user_info.add');
         }
 
         return view('order.confirmation', compact('cartItems', 'userInfo')); //ユーザー情報が空でなければ確認画面を表示します
@@ -74,7 +73,7 @@ class OrderController extends Controller
     public function orderHistory()
     {
 
-        $orders = Order::with('orderdetails.item')->order()->paginate(3); //認証ユーザーのオーダーレコード一括取得
+        $orders = Order::with('orderdetails.item')->order()->orderby('order_date', 'desc')->paginate(3); //認証ユーザーのオーダーレコード一括取得
 
         // dd($orders);
         // exit();

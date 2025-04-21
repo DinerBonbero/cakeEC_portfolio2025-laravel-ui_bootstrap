@@ -76,7 +76,7 @@
                                     </a>
 
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('user.info') }}">
+                                        <a class="dropdown-item" href="{{ route('user_info.index') }}">
                                             会員情報
                                         </a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
@@ -103,7 +103,7 @@
         <div class="card-footer p-3 bg-white">
             <span class="logo">Laravel</span>
             <div class="footer_icon">
-                <img src="{{ asset('images/chef.png') }}">
+                <img src="{{ asset('images/nakanochef.png') }}">
             </div>
             <div>
                 <span class="copy-right">©laravel</span>

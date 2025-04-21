@@ -7,7 +7,7 @@
 
     <div class="info-add-position p-2">
         <h1 class="info-add-h1">会員情報登録</h1>
-        <form action="{{ route('user.info_store') }}" method="post">
+        <form action="{{ route('user_info.store') }}" method="post">
             @csrf
             <div class="row g-2">
                 <div class="col-3 col-sm-2">

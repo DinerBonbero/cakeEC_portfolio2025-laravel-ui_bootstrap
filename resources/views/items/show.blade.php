@@ -15,7 +15,7 @@
                     <div class="@error('item_Quantity') col-3 @else col-2 @enderror">
                         <input type="number" min="1" max="10"
                             class="form-control  @error('item_Quantity') is-invalid @enderror" id="itemQuantity"
-                            name="item_Quantity" value="{{ old('item_Quantity') }}">
+                            name="item_Quantity" value="{{ old('item_Quantity', $itemNum) }}">
                         @error('item_Quantity')
                             <div class="invalid-feedback show-valid-message">
                                 {{ $message }}

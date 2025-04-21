@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\AddToCartRequest;
 use App\Models\Item;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
-use App\Models\UserInfo;
 
 class CartController extends Controller
 {
@@ -26,7 +24,8 @@ class CartController extends Controller
         //var_dump($item->id);
         $validated = $request->validated();
         Cart::updateOrCreate(//カート内にアイテムがあれば数量を更新、なければアイテムの数量含むレコードを作成
-            [
+            [   
+                'user_id' => Auth::id(),
                 'item_id' => $item->id
             ],
             [

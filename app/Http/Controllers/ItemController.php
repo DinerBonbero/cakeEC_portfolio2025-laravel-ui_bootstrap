@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Item;
+use App\Models\Cart;
 
 class ItemController extends Controller
 {
@@ -11,16 +12,19 @@ class ItemController extends Controller
         // index, showの認証を除外
         $this->middleware('auth')->except(['index', 'show']);
     }
-   
+
     public function index()
     {
-        $items = Item::paginate(8); 
+        $items = Item::paginate(8);
         return view('items.index', ['items' => $items]);
     }
 
     public function show(Item $item)
     {
-        return view('items.show', ['item' => $item]);
+        $cartItem = Cart::byUserAndItem($item->id)->first();
+        
+        return view('items.show', ['item' => $item, 'itemNum' => $cartItem->num ?? null]);//null合体演算子
+
     }
 
 }

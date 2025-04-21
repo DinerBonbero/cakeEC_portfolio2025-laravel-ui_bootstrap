@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Container\Attributes\Auth as ContainerAuth;
-use Illuminate\Http\Request;
 use App\Models\UserInfo;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UserInfoRequest;
-use App\Http\Requests\UpdateUserInfoRequest;
 
-class UserController extends Controller
+class UserInfoController extends Controller
 {
     public function info()
     { //🍀ナビバーのユーザー情報のボタンを押したとき
@@ -23,7 +19,7 @@ class UserController extends Controller
             //postで/user/infoのURLになっているのに、redirectせずにviewしちゃうと
             //🍀URLが/user/infoのままになってしまう。おかしい
 
-            return redirect()->route('user.info_add');
+            return redirect()->route('user_info.add');
             //userinfoが無ければリダイレクトでinfo_addに遷移
         }
 
@@ -56,7 +52,7 @@ class UserController extends Controller
             'building' => $validated['building']
         ]);
 
-        return redirect()->route('user.info'); //バリOKならinfo(情報一覧)へ
+        return redirect()->route('user_info.index'); //バリOKならinfo(情報一覧)へ
     }
 
     public function infoEdit()
@@ -70,7 +66,7 @@ class UserController extends Controller
             //postで/user/infoのURLになっているのに、redirectせずにviewしちゃうと
             //URLが/user/info-editのままになってしまう。おかしい
 
-            return redirect()->route('user.info_add');
+            return redirect()->route('user_info.add');
             //userinfoが無ければリダイレクトでinfo_addに遷移
         }
 
@@ -94,6 +90,6 @@ class UserController extends Controller
             'building' => $validated['building']
         ]);
 
-        return redirect()->route('user.info');
+        return redirect()->route('user_info.index');
     }
 }
