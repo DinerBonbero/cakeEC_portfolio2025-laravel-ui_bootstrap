@@ -13,7 +13,7 @@ MySQL<br>
 ### イラスト<br>
 ibisPaintX(イラストアプリ)<br>
 ・イラストアプリを使ってフッター部分のキャラクターを貼り付けました。<br>
-
+![nakanochef](https://github.com/user-attachments/assets/407f219d-52c0-4a27-ac84-5950b1913dfa)
 <br>
 ## サイトの構成<br>
 大きくログイン者と未登録または未ログイン者向けにに二つに分けて作成しました。<br>
