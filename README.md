@@ -10,6 +10,7 @@ MySQL<br>
 ### 画像加工<br>
 フォトスケープx(画像加工アプリ)<br>
 ・切り取り、文字入れ、明るさ・サイズ調整などの簡単な操作をしました。<br>
+![header](https://github.com/user-attachments/assets/cccb9255-d110-4f52-9a34-845f90778388)
 ### イラスト<br>
 ibisPaintX(イラストアプリ)<br>
 ・イラストアプリを使ってフッター部分のキャラクターを貼り付けました。<br>
