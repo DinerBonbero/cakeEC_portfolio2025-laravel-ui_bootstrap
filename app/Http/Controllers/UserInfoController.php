@@ -8,7 +8,7 @@ use App\Http\Requests\UserInfoRequest;
 
 class UserInfoController extends Controller
 {
-    public function info()
+    public function index()
     { //🍀ナビバーのユーザー情報のボタンを押したとき
 
         $userInfo = UserInfo::info()->first(); //🍀info()はscopeの認証ユーザーidの該当するuser_idのwhere()
@@ -30,12 +30,12 @@ class UserInfoController extends Controller
 
     }
 
-    public function infoAdd()
+    public function add()
     {
         return view('users.info-add'); //🍀ユーザー情報追加画面
     }
 
-    public function infoStore(UserInfoRequest $request)
+    public function store(UserInfoRequest $request)
     { //ユーザー情報登録のバリデーション
 
         $validated = $request->validated(); //バリデーションしてOKなら$validatedに、NOならフォームに戻る
@@ -55,7 +55,7 @@ class UserInfoController extends Controller
         return redirect()->route('user_info.index'); //バリOKならinfo(情報一覧)へ
     }
 
-    public function infoEdit()
+    public function edit()
     { //ユーザー情報の編集ページに移動getの(info-edit)
 
         $userInfo = UserInfo::info()->first();
@@ -73,7 +73,7 @@ class UserInfoController extends Controller
         return view('users.info-edit', compact('userInfo'));
     }
 
-    public function infoUpdate(UserInfoRequest $request)
+    public function update(UserInfoRequest $request)
     { //ユーザー情報(user-info)のアップデート処理フォームリクエスト
         
         $validated = $request->validated();

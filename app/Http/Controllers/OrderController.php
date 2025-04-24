@@ -64,13 +64,13 @@ class OrderController extends Controller
         return redirect()->route('order.after');
     }
 
-    public function orderAfter() //注文処理完了後のページ
+    public function after() //注文処理完了後のページ
     {
 
         return view('order.after');
     }
 
-    public function orderHistory()
+    public function history()
     {
 
         $orders = Order::with('orderdetails.item')->order()->orderby('order_date', 'desc')->paginate(3); //認証ユーザーのオーダーレコード一括取得

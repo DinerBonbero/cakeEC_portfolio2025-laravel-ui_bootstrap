@@ -19,23 +19,23 @@ Route::get('/carts/index', [CartController::class, 'index'])->name('carts.index'
 
 Route::delete('/carts/delete/{item}', [CartController::class, 'delete'])->name('carts.delete')->middleware('auth');
 
-Route::get('/users/info', [UserInfoController::class, 'info'])->name('user_info.index')->middleware('auth');
+Route::get('/users_info', [UserInfoController::class, 'index'])->name('user_info.index')->middleware('auth');
 
-Route::get('/users/info_add', [UserInfoController::class, 'infoAdd'])->name('user_info.add')->middleware('auth');
+Route::get('/users_info/add', [UserInfoController::class, 'add'])->name('user_info.add')->middleware('auth');
 
-Route::post('/users/info_store', [UserInfoController::class, 'infoStore'])->name('user_info.store')->middleware('auth');
+Route::post('/users_info/store', [UserInfoController::class, 'store'])->name('user_info.store')->middleware('auth');
 
-Route::get('/users/info_edit', [UserInfoController::class, 'infoEdit'])->name('user_info.edit')->middleware('auth');
+Route::get('/users_info/edit', [UserInfoController::class, 'edit'])->name('user_info.edit')->middleware('auth');
 
-Route::PATCH('/users/info_update', [UserInfoController::class, 'infoUpdate'])->name('user_info.update')->middleware('auth');
+Route::PATCH('/users_info/update', [UserInfoController::class, 'update'])->name('user_info.update')->middleware('auth');
 
 Route::post('/order/confirmation', [OrderController::class, 'confirmation'])->name('order.confirmation')->middleware('auth');
 
 Route::post('/order/complete', [OrderController::class, 'complete'])->name('order.complete')->middleware('auth');
 
-Route::get('/order/after', [OrderController::class, 'orderAfter'])->name('order.after')->middleware('auth');
+Route::get('/order/after', [OrderController::class, 'after'])->name('order.after')->middleware('auth');
 
-Route::get('/order/history', [OrderController::class, 'orderHistory'])->name('order.history')->middleware('auth');
+Route::get('/order/history', [OrderController::class, 'history'])->name('order.history')->middleware('auth');
 
 // エラー確認用
 // Route::get('/errors/401', function () {
