@@ -7,6 +7,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -26,40 +27,44 @@ class OrderController extends Controller
     public function complete()
     {
 
-        $totalPrice = 0;
-        $orderDate = date('Y-m-d');
+        DB::transaction(function () {
 
-        $cartItems = Cart::with('item')->cart()->get(); //ログインユーザーのカートの商品レコードを全て抽出
+            $totalPrice = 0;
+            $orderDate = date('Y-m-d');
 
-        // foreach ($cartItems as $cartItem) {
-        //     $totalPrice += $cartItem->num * $cartItem->item->price; //合計金額の算出
-        // }
-        //下記に書き換え
+            $cartItems = Cart::with('item')->cart()->get(); //ログインユーザーのカートの商品レコードを全て抽出
 
-        $totalPrice = $cartItems->sum(function ($cartItem) {
-            return $cartItem->num * $cartItem->item->price;
-        });
+            // foreach ($cartItems as $cartItem) {
+            //     $totalPrice += $cartItem->num * $cartItem->item->price; //合計金額の算出
+            // }
+            //下記に書き換え
 
-        // var_dump($totalPrice);
-        // var_dump($orderDate);
-        // exit();
+            $totalPrice = $cartItems->sum(function ($cartItem) {
+                return $cartItem->num * $cartItem->item->price;
+            });
 
-        $order = Order::create([ //order(注文票)レコード作成※1行のみ
-            'user_id' => Auth::id(),
-            'order_date' => $orderDate,
-            'total' => $totalPrice
-        ]);
+            // var_dump($totalPrice);
+            // var_dump($orderDate);
+            // exit();
 
-        foreach ($cartItems as $cartItem) { //抽出したカートの商品をorderDetailに全て登録(移すイメージ)
-
-            OrderDetail::create([
-                'order_id' => $order->id,//注文したorderレコードのid
-                'item_id' => $cartItem->item_id,
-                'num' => $cartItem->num
+            $order = Order::create([ //order(注文票)レコード作成※1行のみ
+                'user_id' => Auth::id(),
+                'order_date' => $orderDate,
+                'total' => $totalPrice
             ]);
-        }
 
-        Cart::cart()->delete(); //orderdetailに登録が終わったらカート内の削除
+            foreach ($cartItems as $cartItem) { //抽出したカートの商品をorderDetailに全て登録(移すイメージ)
+
+                OrderDetail::create([
+                    'order_id' => $order->id, //注文したorderレコードのid
+                    'item_id' => $cartItem->item_id,
+                    'num' => $cartItem->num
+                ]);
+            }
+
+            Cart::cart()->delete(); //orderdetailに登録が終わったらカート内の削除
+
+        }, 2);
 
         return redirect()->route('order.after');
     }
