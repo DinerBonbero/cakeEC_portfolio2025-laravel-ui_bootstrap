@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class OrderController extends Controller
 {
@@ -26,45 +27,54 @@ class OrderController extends Controller
 
     public function complete()
     {
+        try {
 
-        DB::transaction(function () {
+            DB::transaction(function () {
 
-            $totalPrice = 0;
-            $orderDate = date('Y-m-d');
+                $totalPrice = 0;
+                $orderDate = date('Y-m-d');
 
-            $cartItems = Cart::with('item')->cart()->get(); //ログインユーザーのカートの商品レコードを全て抽出
+                $cartItems = Cart::with('item')->cart()->get(); //ログインユーザーのカートの商品レコードを全て抽出
 
-            // foreach ($cartItems as $cartItem) {
-            //     $totalPrice += $cartItem->num * $cartItem->item->price; //合計金額の算出
-            // }
-            //下記に書き換え
+                // foreach ($cartItems as $cartItem) {
+                //     $totalPrice += $cartItem->num * $cartItem->item->price; //合計金額の算出
+                // }
+                //下記に書き換え
 
-            $totalPrice = $cartItems->sum(function ($cartItem) {
-                return $cartItem->num * $cartItem->item->price;
-            });
+                $totalPrice = $cartItems->sum(function ($cartItem) {
+                    return $cartItem->num * $cartItem->item->price;
+                });
 
-            // var_dump($totalPrice);
-            // var_dump($orderDate);
-            // exit();
+                // var_dump($totalPrice);
+                // var_dump($orderDate);
+                // exit();
 
-            $order = Order::create([ //order(注文票)レコード作成※1行のみ
-                'user_id' => Auth::id(),
-                'order_date' => $orderDate,
-                'total' => $totalPrice
-            ]);
-
-            foreach ($cartItems as $cartItem) { //抽出したカートの商品をorderDetailに全て登録(移すイメージ)
-
-                OrderDetail::create([
-                    'order_id' => $order->id, //注文したorderレコードのid
-                    'item_id' => $cartItem->item_id,
-                    'num' => $cartItem->num
+                $order = Order::create([ //order(注文票)レコード作成※1行のみ
+                    'user_id' => Auth::id(),
+                    'order_date' => $orderDate,
+                    'total' => $totalPrice
                 ]);
-            }
 
-            Cart::cart()->delete(); //orderdetailに登録が終わったらカート内の削除
+                foreach ($cartItems as $cartItem) { //抽出したカートの商品をorderDetailに全て登録(移すイメージ)
 
-        }, 2);
+                    OrderDetail::create([
+                        'order_id' => $order->id, //注文したorderレコードのid
+                        'item_id' => $cartItem->item_id,
+                        'num' => $cartItem->num
+                    ]);
+                }
+
+                Cart::cart()->delete(); //orderdetailに登録が終わったらカート内の削除
+
+                //throw new \Exception('トランザクション内のエラー');//テスト用の強制エラー発生、ロールバックされるはず
+            }, 2);
+        } catch (\Illuminate\Auth\AuthenticationException $e) {
+            Log::error("認証エラー: " . $e->getMessage());
+            abort(401); //ログイン画面にリダイレクトの方法もあり
+        } catch (\Exception $e) {
+            Log::error("購入時のエラー: " . $e->getMessage()); //ログにはエラーメッセージを記録
+            abort(500); //全てのエラーを500扱いにする。
+        }
 
         return redirect()->route('order.after');
     }
