@@ -51,10 +51,10 @@ class DatabaseSeeder extends Seeder
 //」
 
 //「
-//　🍀　シーダーの呼び出しマスタ―データはItemSeeder::classのみです
+//　🍀　シーダーの呼び出し　🍀マスタ―データはItemSeeder::classのみです🍀他はフェイクデータのファクトリーです。
         $this->call([
             //CartSeeder::class,
-            ItemSeeder::class,
+            ItemSeeder::class,//🍀マスターデータ＝ItemSeeder::classのみ🍀
             //OrderDetailSeeder::class,
             //OrderSeeder::class,
             //UserInfoSeeder::class

@@ -36,7 +36,7 @@ class ItemSeeder extends Seeder
         ];
 
         foreach ($items as $item) {
-            Item::create($item);
+            Item::create($item);//マスターデータ
         }
     }
 }
