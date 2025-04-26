@@ -14,7 +14,7 @@ export default defineConfig({
     css: {
         preprocessorOptions: {
             scss: {
-                quietDeps: true, // SCSSの警告を抑制
+                quietDeps: true, // npm dev runのSCSSの警告を抑制
             },
         },
     },
